@@ -2070,16 +2070,20 @@
 		ul.feature-icons {
 			list-style: none;
 			padding-left: 0;
+			align-items: center;
 		}
 
 			ul.feature-icons li {
 				text-decoration: none;
 				display: inline-block;
-				margin: 0 0 1.6875em 0;
-				padding: 0.35em 0 0 3.5em;
 				position: relative;
 				vertical-align: top;
-				width: 48%;
+				text-align: center;
+				padding: 10px 20px;
+			}
+
+			ul.feature-icons img {
+				width: 70px;
 			}
 
 				ul.feature-icons li:before {
