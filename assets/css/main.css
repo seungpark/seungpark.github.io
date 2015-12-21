@@ -2475,6 +2475,11 @@ ul.labeled-icons {
 				width: 100%;
 			}
 
+			.features article .image video {
+				display: block;
+				width: 100%;
+			}
+
 		.features article .inner {
 			display: inline-block;
 			vertical-align: middle;
