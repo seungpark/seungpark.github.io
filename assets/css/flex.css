@@ -1,0 +1,35 @@
+.flex-container {
+    display: flex;
+    padding: 12px;
+    max-width: 100%;
+    flex-wrap: wrap;
+    row-gap: 40px;
+    column-gap: 10%;
+    justify-content: space-evenly;
+}
+
+.grid-el {
+    display: flex;
+    flex: 0 0 60px;
+    max-width: 60px;
+    flex-direction: column;
+    text-align: center;
+    height: 110px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-container .grid-el p {
+    margin-bottom: 0;
+}
+
+.flex-container .grid-el img {
+    width: 100%;
+    height: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .grid-el {
+        flex: 
+    }
+  }
