@@ -25,12 +25,6 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-      # Make sure custom domain stays.
-      # This copies repo's CNAME into the published artifact.
-      - run: |
-          if [ -f CNAME ]; then
-            cp public/CNAME dist/CNAME
-          fi
 
       - uses: actions/upload-pages-artifact@v3
         with:
