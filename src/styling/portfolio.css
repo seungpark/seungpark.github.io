@@ -1756,6 +1756,10 @@ body {
 	background: #fff;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body,
 input,
 select,
@@ -3063,6 +3067,7 @@ input[type="button"]:disabled,
 		border: 0;
 		outline: 0;
 		right: 0;
+		cursor: pointer;
 	}
 
 	#titleBar .toggle:before {

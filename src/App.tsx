@@ -11,6 +11,31 @@ function App() {
     }
   }
 
+
+  // effect to smooth scroll on hash change, e.g. when clicking on anchor links
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    function onHashChange() {
+      console.log('hash changed');
+      const hash = window.location.hash;
+
+      if (!hash) return;
+
+      const id = hash.replace("#", "");
+      const el = document.getElementById(id);
+
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+
+    window.addEventListener("hashchange", onHashChange, { passive: true });
+    return () => window.removeEventListener("hashchange", onHashChange);
+
+
+  })
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
@@ -22,7 +47,7 @@ function App() {
     const el = document.getElementById(id);
 
     if (el) {
-      el.scrollIntoView();
+      el.scrollIntoView({ behavior: "smooth" });
     }
   }, []);
 
@@ -176,14 +201,6 @@ function App() {
         <span className="title"><a href="#" style={{ WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)' }}>Seung Park</a> </span>
         <span className='toggle' onClick={toggleMenu}></span>
       </div>
-      <script src="assets/js/jquery.min.js"></script>
-      <script src="assets/js/jquery.scrollzer.min.js"></script>
-      <script src="assets/js/jquery.scrolly.min.js"></script>
-      <script src="assets/js/skel.min.js"></script>
-      <script src="assets/js/util.js"></script>
-      {/* <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]--> */}
-      <script src="assets/js/main.js"></script>
-
     </>
 
   )

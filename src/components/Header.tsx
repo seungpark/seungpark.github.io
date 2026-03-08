@@ -1,75 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
-
-import { useScrollPosition } from '../hooks/use-scroll-position';
+import { useScrollSpy } from '../hooks/use-scroll-spy';
 
 const sectionIds = ["about", "programming-skills", "recent-projects", "capstone-projects", "contact"] as const;
 
 const Header = () => {
-  const [activeId, setActiveId] = useState<typeof sectionIds[number]>("about");
-  const [lockedId, setLockedId] = useState<typeof sectionIds[number] | null>(null);
-  const ignoreNextScrollRef = useRef(false);
-
-
-  const { topY } = useScrollPosition();
-
-  useEffect(() => {
-    if (lockedId) return;
-
-
-    const scrollBottom = window.scrollY + window.innerHeight;
-    const docHeight = document.documentElement.scrollHeight;
-    const bottomThreshold = 2;
-
-    if (scrollBottom >= docHeight - bottomThreshold) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setActiveId(sectionIds[sectionIds.length - 1]);
-      return;
-    }
-
-    const anchorY = 120;
-
-    let bestId: typeof sectionIds[number] = sectionIds[0];
-    let bestScore = Infinity;
-
-    for (const id of sectionIds) {
-      const el = document.getElementById(id);
-      if (!el) continue;
-
-      const top = el.getBoundingClientRect().top;
-      const score = Math.abs(top - anchorY);
-
-      if (score < bestScore) {
-        bestScore = score;
-        bestId = id;
-      }
-    }
-
-    setActiveId(bestId);
-  }, [topY, lockedId]);
-
-  useEffect(() => {
-    function onScroll() {
-      if (!lockedId) return;
-
-      // Ignore the browser-generated scroll caused by clicking the anchor.
-      if (ignoreNextScrollRef.current) {
-        ignoreNextScrollRef.current = false;
-        return;
-      }
-
-      // First real user scroll after the click unlocks auto-highlighting.
-      setLockedId(null);
-    }
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [lockedId]);
-
-  function handleNavClick(id: typeof sectionIds[number]) {
-    ignoreNextScrollRef.current = true;
-    setLockedId(id);
-    setActiveId(id);
-  }
+  const { activeId, handleNavClick } = useScrollSpy(sectionIds);
 
   return (
     <>
