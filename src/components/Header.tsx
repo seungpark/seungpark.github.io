@@ -1,17 +1,41 @@
+import { useState } from 'react';
 import { useScrollSpy } from '../hooks/use-scroll-spy';
 
 const sectionIds = ["about", "programming-skills", "recent-projects", "capstone-projects", "contact"] as const;
 
 const Header = () => {
   const { activeId, handleNavClick } = useScrollSpy(sectionIds);
+  const [darkMode, setDarkMode] = useState(() => {
+    return document?.documentElement?.classList.contains('dark') ? true : false;
+  });
+
+  const toggleDarkMode = () => {
+    setDarkMode((prev) => {
+      const newDarkMode = !prev;
+      if (typeof document === 'undefined') return newDarkMode; // Ensure document is available
+      if (newDarkMode) {
+        document.documentElement.classList.add('dark');
+        localStorage?.setItem('theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage?.setItem('theme', 'light');
+      }
+      return newDarkMode;
+    });
+  };
+
 
   return (
     <>
       <header>
         <span className="image avatar"><img src="images/avatar.jpg" alt="" /></span>
         <h1 id="logo"><a href="#">Seung Park</a></h1>
-        <p>Software Engineer<br />
-          New York, NY</p>
+        <div className="content">
+          <p>Software Engineer<br />
+            New York, NY</p>
+          <a className={`fa dark-mode-cta ${darkMode ? "fa-moon" : "fa-sun"}`} onClick={toggleDarkMode}>
+          </a>
+        </div>
       </header>
       <nav id="nav">
         <ul>

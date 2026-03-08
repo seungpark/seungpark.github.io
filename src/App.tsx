@@ -1,4 +1,5 @@
 import './styling/flex.css'
+import './styling/theme.css'
 import './styling/portfolio.css'
 import Header from './components/Header'
 import { useEffect } from 'react';

@@ -54,7 +54,6 @@ export function useScrollSpy<T extends string>(sectionIds: readonly T[]) {
     }
 
     if (activeId !== bestId) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setActiveId(bestId);
     }
   }, [topY, lockedId, activeId, sectionIds]);
