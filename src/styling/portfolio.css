@@ -2754,6 +2754,8 @@ input[type="button"]:disabled,
 #header .dark-mode-cta {
 	border: 0;
 	color: var(--color-header-dark-mode-cta) !important;
+	background: inherit;
+	padding-inline: 0;
 	display: block;
 	align-self: center;
 	font-size: 1em;
@@ -2836,7 +2838,7 @@ input[type="button"]:disabled,
 /* One */
 
 #about:before {
-	background-image: url("../../images/banner.jpg");
+	background-image: url("/images/banner.jpg");
 	background-position: top right;
 	background-repeat: no-repeat;
 	background-size: cover;

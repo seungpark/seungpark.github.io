@@ -122,13 +122,13 @@ html.dark {
     --color-features-article-border: #252c36;
     --color-header-bg: #1b7f69;
     --color-header-text: #d6f5ec;
-    --color-header-heading: #e6fffa;
+    --color-header-heading: #d9d9d9;
     --color-header-header-p: #b7eadb;
-    --color-header-link: #d6f5ec;
+    --color-header-link: #d9d9d9;
     --color-header-link-hover: #ffffff;
     --color-header-footer-icons: #b7eadb;
     --color-header-nav-border: #28967d;
-    --color-header-nav-link: #d7f7ef;
+    --color-header-nav-link: #d9d9d9;
     --color-header-nav-link-active-bg: #12161d;
     --color-header-nav-link-active-text: #63d7b6;
     --color-wrapper-bg: #12161d;
